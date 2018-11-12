@@ -1,0 +1,34 @@
+第三章  基本概念
+1.语法
+  Ⅰ.ECMAScript中的一切都是区分大小写的
+  Ⅱ.标识符表示变量、函数、属性的名字或者函数的参数，命名的规则如下：
+    ①.第一个字符必须是字母、下划线或者美元符
+    ②.其他字符可以是字符、下划线、美元符或者数字
+  Ⅲ.通过字符串"use strict"来开启JavaScript的严格模式。严格模式定义了一种不同的解析与执行模型（该字符串可以放在JS文件的顶部也可以只放在某一个函数内部的上方）
+2.在严格模式下，eval和arguments不能用来作为标识符或者属性名
+3.js的变量是松散类型的，即可以用来保存任何类型的数据
+4.定义了之后未初始化的变量的默认值未undefined
+5.使用了var关键字来定义的变量是一个局部变量，没有使用var关键字直接定义的变量未全局变量。（推荐所有的变量都通过var定义，因为在严格模式下不通过var定义变量会报错）
+6.ECMAScript中有五种基本类型（Undefined、Null、String、Number、Boolean）和一种复杂类型（Object）
+6.可以通过typeof操作符来检测变量的数据类型，该操作符会返回以下六种字符串
+  Ⅰ."undefined"===>表示这个值未定义
+  Ⅱ."boolean"====>表示这个值为布尔值
+  Ⅲ."string"====>表示这个值为字符串
+  Ⅳ."number"====>表示这个值为数值
+  Ⅴ."object"====>表示这个值为对象或者null
+  Ⅵ."function"==>表示这个值为函数
+  Ⅶ.注意：在Safari5及之前的版本和Chrome7及之前的版本，对正则表达式调用typeof操作符会返回"function"，但其他的浏览器会返回"object"
+7.Undefined类型只有一个值就是undefined
+8.对未初始化的变量和未声明的变量调用typeof操作符都会返回"undefined"
+9.Null类型只有一个值就是null，表示一个空对象指针。这也是为什么typeof null的值为"object"的原因
+10.undefined值是派生自null值的。所以null==undefined
+11.只要意在保存对象的变量还没有真正保存对象，就应该明确的让该变量保存null值
+12.Boolean类型只有两个字面值，就是true和false
+13.虽然Boolean类型只有两个值，但是ECMAScript中所有类型的值都有与这两个Boolean值等价的值，可以使用Boolean()函数将值转换成对应的Boolean值
+  数据类型              转换为true的值              转换为false的值
+  Boolean                 true                        false
+  String                任何非空字符串                ""(空字符串)
+  Number            任何非零数值（包括无穷大）          0和NaN
+  Object                任何对象                        null
+  Undefined               不存在                     undefined
+14.if语句会根据以上转换规则自动给条件执行Boolean函数
