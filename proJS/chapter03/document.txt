@@ -73,3 +73,20 @@
 30.parseInt()函数有两个参数，第一个参数为带转换的数据，第二个参数为转换时的基数（及进制数），因此为了避免转换错误，无论什么情况下都因该明确指定基数
 31.如果要使用parseInt()函数转换八进制数据的时候，应该加上转换基数这个参数。因为ECMAScript5会将忽略八进制数据的前导零导致解析失败。而ECMAScript3没有这个问题。
 32.parseFloat()函数始终会忽略前导零，并且只解析十进制数据
+33.ECMAScript中的字符串是不可变的
+34.再调用数值的toString()方法的时候，可以传递一个数值的基数的参数，ru：10.toString(2)==>1010
+35.字符串也有转型函数String(),转换规则如下：
+  Ⅰ.如果值有toString()方法，则调用该方法（没有参数）并返回相应的值
+  Ⅱ.如果值是null，则返回"null"
+  Ⅲ.如果值是undefined，则返回"undefined"
+36.ECMAScript中的对象就是一组数据和功能的集合
+37.创建对象的方式： var o = new Object(); 如果不需要给构造参数传递参数，也可以直接这样 var o = new Object;
+38.Object类型是所有他的实例的基础
+39.每个Object的实例都具有以下方法：
+  Ⅰ.constructor:保存着用于创建当前对象的函数
+  Ⅱ.hasOwnProperty(propertyName):检查给定属性是否存在于当前对象实例中（而不是存在于实例的原型中）
+  Ⅲ.isPrototypeOf(object):检查传入对象是否为当前对象的原型
+  Ⅳ.propertyIsEnumerable(propertyName):检查给定属性是否能够使用for-in语句
+  Ⅴ.toLocalString():返回对象字符串，与执行环境所在地有关
+  Ⅵ.toString():返回对象字符串
+  Ⅶ.valueOf():返回对象的字符串、数值或布尔值表示（通常与同String的返回值一致）
