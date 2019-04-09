@@ -1,41 +1,53 @@
-<div class="bg-info p-a-1">There are {{getProductCount()}} products</div>
-<p>*ngIf</p>
-<div>
-  <div class="bg-info p-a-1 m-t-1" *ngIf="getProductCount() > 4">
-    There are more than 4 products in the model.
-  </div>
-  <div *ngIf="getProductByPosition(0).name !== 'Kayak'" class="bg-info p-a-1 m-t-1">
-    The first product isn`t a Kayak
-  </div>
+<!-- <div [ngClass]="'p-a-1 '+getClasses()" [textContent]="'Name: '+(model.getProduct(1)?.name || 'None')">
+  There area {{model.getProducts().length}} products in the model
+</div> -->
+<!-- <div [ngClass]="'p-a-1 '+getClass()">
+  Name: {{model.getProduct(1)?.name || 'None'}}
 </div>
-<p>ngSwitch</p>
-<div>
-  <div class="bg-info p-a-1 m-t-1" [ngSwitch]="getProductCount()">
-    <span *ngSwitchCase="2">There are two products</span>
-    <span *ngSwitchCase="5">There are five products</span>
-    <span *ngSwitchDefault>There is the default</span>
-  </div>
-  <div class="bg-info p-a-1 m-t-1" [ngSwitch]="getProductByPosition(0).name">
-    <span *ngSwitchCase="targetName">Kayak</span>
-    <span *ngSwitchCase="'Lifejacket'">Lifejacket</span>
-    <span *ngSwitchDefault>Other Product</span>
-  </div>
+<div class="form-group m-t-1">
+  <label>Name:</label>
+  <input class="form-control" [value]="model.getProduct(1)?.name || 'None'">
 </div>
-<p>*ngFor</p>
-<div>
-  <table class="table table-sm table-bordered m-t-1">
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Price</th>
-    </tr>
-    <tr *ngFor="let item of getProducts();let i=index;let odd=odd;let even=even;"
-      [class.bg-primary]="odd" [class.bg-info]="even">
-      <td>{{i+1}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.category}}</td>
-      <td>{{item.price}}</td>
-    </tr>
-  </table>
+<table class="table table-sm table-bordered table-striped m-t-1">
+  <tr>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+    <th>5</th>
+  </tr>
+  <tr>
+    <td [attr.colspan]="model.getProducts().length">
+      {{model.getProduct(1)?.name||'None'}}
+    </td>
+  </tr>
+</table>
+
+<div [class]="getClasses(1)">
+  The <span [style.font-size]="fontSizeWithUnits">first</span> product is {{model.getProduct(1)?.name || 'None'}}
+</div>
+<div [class]="getClasses(2)">
+  The <span [style.font-size.px]="fontSizeWithoutUnits">second</span> product is {{model.getProduct(2)?.name || 'None'}}
+</div>
+<div class="p-a-1"
+  [class.bg-success]="model.getProduct(2).price < 50"
+  [class.bg-info]="model.getProduct(2).price >= 50">
+  The second product is {{model.getProduct(2)?.name || 'None'}}
+</div>
+
+<div class="p-a-1" [ngClass]="getClassMap(1)">
+  The <span [ngStyle]="getStyles(1)">first</span> product is {{model.getProduct(1)?.name || 'None'}}
+</div>
+<div class="p-a-1" [ngClass]="getClassMap(2)">
+  The <span [ngStyle]="getStyles(2)">second</span> product is {{model.getProduct(2)?.name || 'None'}}
+</div>
+<div class="p-a-1" [ngClass]="{'bg-success': model.getProduct(3).price < 50, 'bg-info': model.getProduct(3).price >= 50}">
+  The third product is {{model.getProduct(3)?.name || 'None'}}
+</div> -->
+
+<div [ngClass]="getClassesByPosition(0)">
+  The first product is {{getProductByPosition(0).name}}
+</div>
+<div [ngClass]="getClassesByPosition(1)">
+  The first product is {{getProductByPosition(1).name}}
 </div>
