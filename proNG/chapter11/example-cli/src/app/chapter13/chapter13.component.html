@@ -44,3 +44,19 @@
     </tr>
   </table>
 </div>
+<p>ngTemplateOutlet</p>
+<ng-template #titleTemplate let-text="text">
+  <h4 class="p-a-1 bg-success">{{text}}</h4>
+</ng-template>
+<ng-template [ngTemplateOutlet]="titleTemplate" [ngTemplateOutletContext]="{text: 'Header'}"></ng-template>
+<div class="p-a-1 m-a-1 bg-info">
+  There are {{getProductCount1()}} products.
+</div>
+<ng-template *ngTemplateOutlet="titleTemplate; context: {text: 'Footer'}"></ng-template>
+<p>单向数据绑定的短板</p>
+<div class="bg-info p-a-1">
+  <!-- Counter: {{counter=counter+1}} -->
+</div>
+<div class="bg-info p-a-1">
+  Next product is {{nextProduct.name}}
+</div>

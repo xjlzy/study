@@ -10,6 +10,8 @@ export class Chapter13Component {
     model: Model = new Model();
     targetName: string = "Kayak";
 
+    counter: number = 1;
+
     constructor(ref: ApplicationRef) {
         (<any>window).appRef = ref;
         (<any>window).model = this.model;
@@ -30,8 +32,16 @@ export class Chapter13Component {
     getProductCount(): number {
         return this.model.getProducts().length;
     }
+    getProductCount1(): number {
+        console.log('getProductCount invoked');
+        return this.model.getProducts().length;
+    }
 
     getKey(index: number, product: Product) {
         return product.id;
+    }
+
+    get nextProduct(): Product {
+        return this.model.getProducts().shift();
     }
 }
