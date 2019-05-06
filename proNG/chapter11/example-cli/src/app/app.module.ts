@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { Chapter12Component } from './chapter12/chapter12.component';
 import { Chapter13Component } from './chapter13/chapter13.component';
 import { Chapter14Component } from './chapter14/chapter14.component';
+import { Chapter14ModelFormComponent } from './chapter14/chapter14-model-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Chapter12Component,
     Chapter13Component,
-    Chapter14Component
+    Chapter14Component,
+    Chapter14ModelFormComponent
   ],
   imports: [
     BrowserModule,

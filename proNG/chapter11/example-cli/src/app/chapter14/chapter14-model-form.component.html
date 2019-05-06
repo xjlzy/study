@@ -1,0 +1,71 @@
+<form novalidate [formGroup]="form" (ngSubmit)="submitForm(form)">
+  <div class="bg-danger p-a-1 m-b-1" *ngIf="formSubmitted && form.invalid">
+    There are problems with the form
+    <ul>
+      <li *ngFor="let error of form.getFormValidationMessage()">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+  <!-- <div class="form-group">
+    <label>Name</label>
+    <input 
+      type="text" 
+      class="form-control"
+      name="name"
+      [(ngModel)]="newProduct.name"
+      formControlName="name">
+    <ul class="text-danger list-unstyled" 
+      *ngIf="(formSubmitted || form.controls['name'].dirty) && form.controls['name'].invalid">
+      <li *ngFor="let error of form.controls['name'].getValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Category</label>
+    <input 
+      type="text" 
+      class="form-control"
+      name="category"
+      [(ngModel)]="newProduct.category"
+      formControlName="category">
+    <ul class="text-danger list-unstyled" 
+      *ngIf="(formSubmitted || form.controls['category'].dirty) && form.controls['category'].invalid">
+      <li *ngFor="let error of form.controls['category'].getValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+  <div class="form-group">
+    <label>Price</label>
+    <input 
+      type="text" 
+      class="form-control"
+      name="price"
+      [(ngModel)]="newProduct.price"
+      formControlName="price">
+    <ul class="text-danger list-unstyled" 
+      *ngIf="(formSubmitted || form.controls['price'].dirty) && form.controls['price'].invalid">
+      <li *ngFor="let error of form.controls['price'].getValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+  </div> [(ngModel)]="newProduct[control.modelProperty]" name="{{control.modelProperty}}"-->
+  <!-- Angular V7 中响应式表单舍弃了ngModel属性   -->
+  <div class="form-group" 
+    *ngFor="let control of form.productControls">
+    <label>{{control.label}}</label>
+    <input type="text" class="form-control"
+      formControlName="{{control.modelProperty}}">
+    <ul class="text-danger list-unstyled" 
+      *ngIf="(formSubmitted || control.dirty) && control.invalid">
+      <li *ngFor="let error of control.getValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+  </div>
+  <button class="btn btn-primary" type="submit" 
+    [disabled]="formSubmitted && form.invalid"
+    [class.btn-secondary]="formSubmitted && form.invalid">Create</button>
+</form>

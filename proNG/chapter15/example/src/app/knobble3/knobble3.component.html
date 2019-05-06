@@ -1,0 +1,35 @@
+<div class="col-xs-6">
+  <form novalidate [formGroup]="form" (ngSubmit)="submitForm(form)">
+    <div class="form-group"
+      *ngFor="let control of form.productControls">
+      <label>{{control.label}}</label>
+      <input type="text"
+        class="form-control"
+        formControlName="{{control.modelProperty}}">
+      <ul class="text-danger list-unstyled" *ngIf="(formSubmitted || control.dirty) && control.invalid">
+        <li *ngFor="let error of control.getValidtionMessages()">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" type="submit"
+      [disabled]="formSubmitted&&form.invalid"
+      [class.btn-secondary]="formSubmitted&&form.invalid">Create</button>
+  </form>
+</div>
+<div class="col-xs-6">
+  <table class="table table-sm bordered table-striped">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+    <tr *ngFor="let item of getProducts(); let i=index;" [pa-attr-1]="getProducts().length < 6 ? 'bg-success' : 'bg-warning'">
+      <th>{{i+1}}</th>
+      <th>{{item.name}}</th>
+      <th [pa-attr-1]="item.category === 'Soccer' ? 'bg-info' : null">{{item.category}}</th>
+      <th [pa-attr-1]="'bg-info'">{{item.price}}</th>
+    </tr>
+  </table>
+</div>
