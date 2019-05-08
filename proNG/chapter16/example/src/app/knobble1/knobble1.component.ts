@@ -14,6 +14,7 @@ export class Knobble1Component {
   form: ProductFormGroup = new ProductFormGroup();
   newProduct: Product = new Product();
   formSubmitted: boolean = false;
+  showTable: boolean = true;
 
   getProduct(key: number): Product {
     return this.model.getProduct(key);
@@ -25,6 +26,10 @@ export class Knobble1Component {
 
   addProduct(p: Product) {
     this.model.saveProduct(p);
+  }
+
+  deleteProduct(key: number) {
+    this.model.deleteProduct(key);
   }
 
   submitForm(form: NgForm): void {
