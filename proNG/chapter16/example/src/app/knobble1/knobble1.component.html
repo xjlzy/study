@@ -18,6 +18,9 @@
   <div class="checkbox">
     <label><input type="checkbox" [(ngModel)]="showTable">Show Table</label>
   </div>
+  <div class="checkbox">
+    <label><input type="checkbox" [(ngModel)]="darkColor">Dark Cell Color</label>
+  </div>
   <!-- <ng-template [paIf]="showTable">
     <table class="table table-sm bordered table-striped">
       <tr>
@@ -38,7 +41,7 @@
       </tr>
     </table>
   </ng-template> -->
-  <table *paIf="showTable" class="table table-sm bordered table-striped">
+  <table *paIf="showTable" [paCellDarkColor]="darkColor" class="table table-sm bordered table-striped">
     <tr>
       <th></th>
       <th>Name</th>

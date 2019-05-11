@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaAttrDirective } from './Directive/pa-attr.directive';
 import { PaStructureDirective } from './Directive/structure.directive';
 import { PaIteratorDirective } from './Directive/iterator.directive';
+import { PaCellColorDirective } from './Directive/cellColor.directive';
+import { PaCellColorSwitcherDirective } from './Directive/cellColorSwitcher.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { PaIteratorDirective } from './Directive/iterator.directive';
     PaAttrDirective,
     PaStructureDirective,
     PaIteratorDirective,
+    PaCellColorDirective,
+    PaCellColorSwitcherDirective,
     Knobble1Component
   ],
   imports: [

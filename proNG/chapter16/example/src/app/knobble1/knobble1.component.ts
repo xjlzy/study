@@ -15,6 +15,7 @@ export class Knobble1Component {
   newProduct: Product = new Product();
   formSubmitted: boolean = false;
   showTable: boolean = true;
+  darkColor: boolean = false;
 
   getProduct(key: number): Product {
     return this.model.getProduct(key);
