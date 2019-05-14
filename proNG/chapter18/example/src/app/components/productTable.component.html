@@ -1,0 +1,36 @@
+<div>
+  <label>Tax Rate:</label>
+  <select [value]="taxRate||0" (change)="taxRate =$event.target.value">
+    <option value="0">None</option>
+    <option value="10">10%</option>
+    <option value="20">20%</option>
+    <option value="50">50%</option>
+  </select>
+</div>
+<div>
+  <label>Category Filter:</label>
+  <select [(ngModel)]="categoryFilter">
+    <option value="Watersports">Watersports</option>
+    <option value="Soccer">Soccer</option>
+    <option value="Chess">Chess</option>
+  </select>
+</div>
+<table class="table table-sm table-bordered table-striped">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let item of getProducts()|filter:categoryFilter; let i=index;let odd=odd;let even=even;" [class.bg-info]="odd"
+    [class.bg-warning]="even">
+    <td style="vertical-align: center;">{{i+1}}</td>
+    <td style="vertical-align: center;">{{item.name}}</td>
+    <td style="vertical-align: center;">{{item.category}}</td>
+    <td style="vertical-align: center;">{{item.price|addTax: (taxRate||0)|currency:"USD":true}}</td>
+    <td class="text-xs-center">
+      <button class="btn btn-danger btn-sn" (click)="deleteProduct(item.id)">Delete</button>
+    </td>
+  </tr>
+</table>
