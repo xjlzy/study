@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,11 @@ import { PaToggleViewComponent } from './components/toggleView.component';
 import { PaCellColorDirective } from './directives/cellColor.directive';
 import { PaAddTaxPipe } from './pipes/addTax.pipe';
 import { PaCategoryFilterPipe } from './pipes/categoryFilter.pipe';
+
+import localeFr from '@angular/common/locales/fr';
+import localeFrExtra from '@angular/common/locales/extra/fr';
+// 注册名称为fr-FR的语言包
+registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
 @NgModule({
   declarations: [
@@ -29,7 +35,9 @@ import { PaCategoryFilterPipe } from './pipes/categoryFilter.pipe';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  // providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    
+}
