@@ -22,21 +22,26 @@
       <div [attr.data-id]="id"></div>
     ```
   * Angular管理元素的css类的几种方法
+
     |方法|示例|描述|
     |:--:|:--|:--|
     |标准属性绑定|`<div [class]="expr"></div>`|此绑定会对表达式求值并用求值结果替换任何现有的css类成员资格(<span style="color:red;">结果会替换宿主元素当前的所有css类</span>)|
     |特殊类绑定|`<div [class.myClass]="expr"></div>`|此绑定将对表达式进行求值并用求值结果设置元素的myClass成员资格|
     |ngClass指令|`<div [ngClass]="map"></div>`|此绑定使用映射对象中的数据设置多个css类的类成员资格|
+    
   * Angular管理宿主元素的样式的几种方法
+
     |方法|示例|描述|
     |:--:|:--|:--|
     |标准属性绑定|`<div [style.myStyle]="expr"></div>`|用于将单个样式属性设置为表达式的结果|
     |特殊样式绑定|`<div [style.myStyle.units]="expr"></div>`|可以将样式值的单位作为目标的一部分来指定|
     |ngStyle指令|`<div [ngStyle]="map"></div>`|使用映射对象中的数据设置多个样式属性|
+
   * Angular可以使用Javascript属性名称格式([style.fontSize])或css属性名称格式([style.font-size])来指定样式属性
 
 # chapter13 章节重点 内置指令
   * 内置指令列表
+
     |指令名|示例|描述|
     |:--:|:--|:--|
     |*ngIf|`<div *ngIf="expr"></div>`|如果表达式的值为true，那么ngIf指令的宿主元素及其内容会包含在HTML文档中|
@@ -45,8 +50,10 @@
     |ngTemplateOutlet|`<ng-template [ngTemplateOutlet]="myTempl"></ng-template>`|ngTemplateOutlet用于重复模版中的内容块|
     |ngClass|`<div [ngClass]="expr"></div>`|用来管理css类成员资格|
     |ngStyle|`<div [ngStyle]="expr"></div>`|用来管理宿主元素的样式|
+
   * 指令名称前的星号(*)表示这是一条微模版指令，同时微模版指令又称为结构性指令
   * ngFor指令的局部模版变量
+
     |名称|描述|
     |:--:|:--|
     |index|这个值指向当前对象在数组中的索引|
@@ -54,6 +61,7 @@
     |even|如果当前对象在数组中的索引是双数，则为true|
     |first|如果当前对象是数组中的第一个对象，则为true|
     |last|如果当前对象是数组中的最后一个对象，则为true|
+
   * ngTemplateOutlet 提供上下文数据
     ```html
       <ng-template #titleTemplate let-text="title">
@@ -83,10 +91,12 @@
     ```
   * 只有当input等元素存在于form元素之下的时候，Angular的验证功能才会开启
   * Angular表单验证CSS类
+
     |名称|描述|
     |:--:|:--|
     |ng-untouched ng-touched|如果元素未被访问，就加入到ng-untouched类中，如果访问过就加入ng-touched中|
     |ng-pristine ng-dirty|如果元素内容未改变过就加入ng-pristine类中，如果改变过就加入ng-dirty类中|
     |ng-valid ng-invalid|如果元素能通过验证就加入到ng-valid类中，否则就加入ng-invalid类中|
+
   * 在属性名称的后面附加一个<span style="color:red;">?</span>符号来告诉Angular，如果该属性为null或者undefined那么不要尝试访问任何后续的属性或方法
   * <span style="color:red;">ReactiveFormsModule</span>模块提供基于模型的表单功能，<span style="color:red;">FormControl</span>类用于表示表单中的单个元素，<span style="color:red;">FormGroup</span>类用于管理form元素及其内容
