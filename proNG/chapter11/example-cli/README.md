@@ -65,3 +65,28 @@
     ```
   * Angular绑定的表达式不能包含数据操作符，比如+、-、+=、-=、++、--等
 # chapter14 章节重点 事件和表单
+  * 事件绑定用于响应宿主元素发送的事件
+  * 事件绑定组成的部分
+    * 宿主元素是绑定的事件源
+    * 圆括号告诉Angular这是一个事件绑定，且是一种单向绑定
+    * 事件指定绑定事件
+    * 表达式在事件触发时进行求值
+  * 事件绑定的方式
+    ```html
+      <!--$event 是事件对象-->
+      <input type="button" (click)="click($event)"/>
+    ```
+  * 当用户编辑input元素的内容时，除非该元素上有事件绑定，否则Angular不会更新模板的数据绑定
+    ```html
+      <!-- 这里将事件绑定设置为false，会为Angular提供一些东西求值，从而启动更新过程  如果没有这个绑定  product模板里面的值并不会更改 -->
+      <input type="text" #product (input)="false"/>
+    ```
+  * 只有当input等元素存在于form元素之下的时候，Angular的验证功能才会开启
+  * Angular表单验证CSS类
+    |名称|描述|
+    |:--:|:--|
+    |ng-untouched ng-touched|如果元素未被访问，就加入到ng-untouched类中，如果访问过就加入ng-touched中|
+    |ng-pristine ng-dirty|如果元素内容未改变过就加入ng-pristine类中，如果改变过就加入ng-dirty类中|
+    |ng-valid ng-invalid|如果元素能通过验证就加入到ng-valid类中，否则就加入ng-invalid类中|
+  * 在属性名称的后面附加一个<span style="color:red;">?</span>符号来告诉Angular，如果该属性为null或者undefined那么不要尝试访问任何后续的属性或方法
+  * <span style="color:red;">ReactiveFormsModule</span>模块提供基于模型的表单功能，<span style="color:red;">FormControl</span>类用于表示表单中的单个元素，<span style="color:red;">FormGroup</span>类用于管理form元素及其内容
