@@ -13,6 +13,7 @@
       constructor(@Attribute('myDir') dir: string){}
     ```
   * 指令的生命周期钩子函数（同样适用与组件）
+  
     |名称|描述|
     |:--:|:--|
     |OnInit|在Angular设置了所有输入属性的初始值之后调用|
