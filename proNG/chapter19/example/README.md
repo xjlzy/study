@@ -1,27 +1,26 @@
-# Example
+# chapter19 章节重点 服务
+  > 服务是提供了常用功能的对象，通过一种名为“依赖注入”的过程使用。
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+  * 通过依赖注入管理和分发的对象被称为服务
+  * Angular中使用@Injectable() 装饰器来创建服务类
+    ```typescript
+      @Injectable()
+      export class XXXService {}
+    ```
+  * 为了创建新的实例，每个依赖被注入到构造函数中。
+  * 使用服务的方法，就是在要使用的类的构造函数中注入该服务。
+    ```typescript
+      export class XXXClass {
+        constructor(private xxx: XXXService){
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+        }
+      }
+    ```
+  * 要使用服务需要现在模块中注册服务  
+    ```typescript
+      @NgModule({
+        /// other setting
+        providers: [XXXService]
+      })
+    ```
+  * 程序中所有声明了针对XXXClass的依赖的组件都会收到<span style="color:red">同一个对象</span>。

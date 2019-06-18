@@ -15,6 +15,9 @@ import { PaCategoryFilterPipe } from './pipes/categoryFilter.pipe';
 
 import localeFr from '@angular/common/locales/fr';
 import localeFrExtra from '@angular/common/locales/extra/fr';
+import { PaDiscountDisplayComponent } from './discount.component';
+import { PaDiscountEditorComponent } from './discountEditor.component';
+import { DiscountService } from './discount.service';
 // 注册名称为fr-FR的语言包
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -27,7 +30,9 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     PaToggleViewComponent,
     PaCellColorDirective,
     PaAddTaxPipe,
-    PaCategoryFilterPipe
+    PaCategoryFilterPipe,
+    PaDiscountDisplayComponent,
+    PaDiscountEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     ReactiveFormsModule
   ],
   // providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
+  providers: [DiscountService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

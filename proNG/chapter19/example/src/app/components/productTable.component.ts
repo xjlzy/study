@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { Model } from '../model/repository.model';
 import { Product } from '../model/product.model';
+import { DiscountService } from '../discount.service';
 
 @Component({
   selector: 'paProductTable',
