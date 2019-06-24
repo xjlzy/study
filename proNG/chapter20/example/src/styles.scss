@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
+input.ng-dirty{
+  border-width: 2px;
+  border-style: solid;
+  &.ng-invalid {
+    border-color: #f00;
+  }
+  &.ng-valid{
+    border-color: #6bc502;
+  }
+}
+.btn {
+  margin-bottom: 5px;
+  & + .btn {
+    margin-left: 5px;
+  }
+}

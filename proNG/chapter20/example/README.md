@@ -1,27 +1,50 @@
-# Example
+# chapter20 章节重点 服务提供程序
+  > 服务提供程序是用来对依赖进行解析的对象，也称为提供程序。
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+  * 创建提供程序，最简单的方法就是将服务类添加到赋予了Angular模板的providers属性的数组中
+  * Angular提供程序分类
 
-## Development server
+    |名称|描述|
+    |:--:|:--|
+    |类提供程序|这个提供程序是用一个类配置的。对服务的依赖是通过一个类的实例来解析的，而这个类是由Angular创建的|
+    |值提供程序|这个提供程序是用一个对象配置的，这个对象用来解析对服务的依赖|
+    |工厂提供程序|这个提供程序是用一个函数配置的。对服务的依赖使用一个对象解析的，这个对象是通过调用函数创建的|
+    |已有服务提供程序|这个提供程序是用其他服务的名称配置的，并且允许待创建的服务使用别名|
+  * 类提供程序有两种写法  
+    ```typescript
+      // 第一种  简写形式
+      @NgModule({
+        prividers: [LogService]
+      })
+      // 第二种 字面量语法形式
+      @NgModule({
+        providers: [{
+          privide: LogService,
+          useClass: LogService,
+          multi: false
+        }]
+      })
+    ```
+  * 类提供程序字面量语法的属性
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    |名称|描述|
+    |:--:|:--|
+    |privide|这个属性用于指定令牌，令牌用于标识提供程序和待解析的依赖|
+    |useClass|这个属性用于指定一个类，这个类在实例化之后可以解析提供程序给出的依赖|
+    |multi|这个属性可以用来传递一个服务对象数组以解析依赖|
+  
+  * 所有提供程序都依赖令牌(Token)，依赖注入系统使用令牌来标识提供程序能够解析的依赖。（最简单的方法就是使用一个类来作为令牌）
+  * 任何对象皆可用来充当令牌，这是因为依赖和对象的类型允许分开。所以类提供程序也可以写成下面这样
+    ```typescript
+      // 定义一个提供程序
+      @NgModule({
+        providers: [{
+          privide: 'logger',
+          useClass: LogService
+        }]
+      })
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+      // 使用这个依赖
+      // @Inject() 装饰器用来指定提供程序的令牌来解析依赖
+      constructor(@Inject('logger') private logger: LogService) {}
+    ```

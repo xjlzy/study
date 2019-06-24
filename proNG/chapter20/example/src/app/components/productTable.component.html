@@ -1,0 +1,58 @@
+<!-- <div>
+  <label>Tax Rate:</label>
+  <select [value]="taxRate||0" (change)="taxRate =$event.target.value">
+    <option value="0">None</option>
+    <option value="10">{{0.1|percent}}</option>
+    <option value="20">{{0.2|percent}}</option>
+    <option value="50">{{0.5|percent}}</option>
+    <option value="150">{{1.5|percent}}</option>
+  </select>
+</div>
+<div>
+  <label>Category Filter:</label>
+  <select [(ngModel)]="categoryFilter">
+    <option value="Watersports">Watersports</option>
+    <option value="Soccer">Soccer</option>
+    <option value="Chess">Chess</option>
+  </select>
+</div>
+<div class="bg-info m-a-1 p-a-1">
+  <div>Date formatted from object: {{dateObject|date:"yyyy-MM-dd HH:mm:ss"}}</div>
+  <div>Date formatted from string: {{dateString|date:'fullDate'}}</div>
+  <div>Date formatted from number: {{dateNumber|date:'shortTime'}}</div>
+</div>
+<div>
+  <label>Number of items:</label>
+  <select [value]="itemCount||1" (change)="itemCount=$event.target.value">
+    <option *ngFor="let item of getProducts();let i= index;" [value]="i+1">
+      {{i+1}}
+    </option>
+  </select>
+</div> -->
+<table class="table table-sm table-bordered table-striped">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Discount</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let item of getProducts(); let i=index;let odd=odd;let even=even;" [class.bg-info]="odd"
+    [class.bg-warning]="even">
+    <td style="vertical-align: center;">{{i+1}}</td>
+    <td style="vertical-align: center;">{{item.name|uppercase}}</td>
+    <td style="vertical-align: center;">{{item.category|lowercase}}</td>
+    <!-- <td style="vertical-align: center;">{{item.price | number: "3.2-2":"fr-FR"}}</td> -->
+    <td style="vertical-align: center;">{{item.price | discount | currency: "USD":'symbol-narrow':"2.2-2"}}</td>
+    <!-- <td style="vertical-align: center;">{{item.price|addTax: (taxRate||0)|currency:"USD":true}}</td> -->
+    <td style="vertical-align: middle;" [pa-price]="item.price" #discount="discount">
+      {{discount.discountAmount | currency:'USD': 'symbol'}}
+    </td>
+    <td class="text-xs-center">
+      <button class="btn btn-danger btn-sn" (click)="deleteProduct(item.id)">Delete</button>
+    </td>
+  </tr>
+</table>
+<paDiscountEditor></paDiscountEditor>
+<paDiscountDisplay></paDiscountDisplay>
