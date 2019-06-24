@@ -1,7 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Model } from '../model/repository.model';
 import { Product } from '../model/product.model';
-import { DiscountService } from '../discount.service';
 
 @Component({
   selector: 'paProductTable',
@@ -16,8 +15,10 @@ export class ProductTableComponent {
   dateNumber: number = 1582156800000;
 
   itemCount: number = 0;
-  @Input('model')
-  dataModel: Model;
+  // @Input('model')
+  // dataModel: Model;
+
+  constructor(private dataModel: Model) { }
 
   getProduct(key: number): Product {
     return this.dataModel.getProduct(key);

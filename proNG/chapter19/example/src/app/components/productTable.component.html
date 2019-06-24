@@ -35,6 +35,7 @@
     <th>Name</th>
     <th>Category</th>
     <th>Price</th>
+    <th>Discount</th>
     <th></th>
   </tr>
   <tr *ngFor="let item of getProducts(); let i=index;let odd=odd;let even=even;" [class.bg-info]="odd"
@@ -43,8 +44,11 @@
     <td style="vertical-align: center;">{{item.name|uppercase}}</td>
     <td style="vertical-align: center;">{{item.category|lowercase}}</td>
     <!-- <td style="vertical-align: center;">{{item.price | number: "3.2-2":"fr-FR"}}</td> -->
-    <td style="vertical-align: center;">{{item.price | currency: "USD":'symbol-narrow':"2.2-2"}}</td>
+    <td style="vertical-align: center;">{{item.price | discount | currency: "USD":'symbol-narrow':"2.2-2"}}</td>
     <!-- <td style="vertical-align: center;">{{item.price|addTax: (taxRate||0)|currency:"USD":true}}</td> -->
+    <td style="vertical-align: middle;" [pa-price]="item.price" #discount="discount">
+      {{discount.discountAmount | currency:'USD': 'symbol'}}
+    </td>
     <td class="text-xs-center">
       <button class="btn btn-danger btn-sn" (click)="deleteProduct(item.id)">Delete</button>
     </td>

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { Product } from 'src/app/model/product.model';
-import { Model } from 'src/app/model/repository.model';
+// import { Product } from 'src/app/model/product.model';
+// import { Model } from 'src/app/model/repository.model';
 
 @Component({
   selector: 'knobble1',
@@ -9,10 +9,11 @@ import { Model } from 'src/app/model/repository.model';
 })
 
 export class Knobble1Component {
-  model: Model = new Model();
+  // model: Model = new Model();
+  // constructor(private model: Model){}
 
-  addProduct(p: Product) {
-    this.model.saveProduct(p);
-  }
+  // addProduct(p: Product) {
+  //   this.model.saveProduct(p);
+  // }
 }
 

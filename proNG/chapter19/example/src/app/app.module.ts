@@ -18,6 +18,10 @@ import localeFrExtra from '@angular/common/locales/extra/fr';
 import { PaDiscountDisplayComponent } from './discount.component';
 import { PaDiscountEditorComponent } from './discountEditor.component';
 import { DiscountService } from './discount.service';
+import { DiscountPipe } from './discount.pipe';
+import { PaDiscountAmountDirective } from './discount.directive';
+import { SimpleDataSource } from './model/datasource.model';
+import { Model } from './model/repository.model';
 // 注册名称为fr-FR的语言包
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -32,7 +36,9 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     PaAddTaxPipe,
     PaCategoryFilterPipe,
     PaDiscountDisplayComponent,
-    PaDiscountEditorComponent
+    PaDiscountEditorComponent,
+    DiscountPipe,
+    PaDiscountAmountDirective
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     ReactiveFormsModule
   ],
   // providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
-  providers: [DiscountService],
+  providers: [DiscountService, SimpleDataSource, Model],
   bootstrap: [AppComponent]
 })
 export class AppModule {
