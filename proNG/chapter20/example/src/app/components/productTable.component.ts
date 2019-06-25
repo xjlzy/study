@@ -1,10 +1,12 @@
 import { Component, Input } from "@angular/core";
 import { Model } from '../model/repository.model';
 import { Product } from '../model/product.model';
+import { LogService } from '../log.service';
 
 @Component({
   selector: 'paProductTable',
-  templateUrl: `./productTable.component.html`
+  templateUrl: `./productTable.component.html`,
+  providers: [LogService]
 })
 export class ProductTableComponent {
   showTable: boolean = false;

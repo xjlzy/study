@@ -48,3 +48,72 @@
       // @Inject() 装饰器用来指定提供程序的令牌来解析依赖
       constructor(@Inject('logger') private logger: LogService) {}
     ```
+  * 设置useClass属性来指定依赖类期待的某种类型时，必须加以小心。指定一个子类是安全的选择，因为基类的功能始终是可用的。
+  * 为了提供一个数组，可以将多个类提供程序配置为使用同一个令牌，并将multi属性设为true
+    ```typescript
+      // 设置多个类提供程序   同一个令牌LOG_SERVICE提供了两个类
+      @NgModule({
+        providers: [
+          {provide: LOG_SERVICE, useClass: LogService, multi: true},
+          {provide: LOG_SERVICE, useClass: SpecialLogService, multi: true}
+        ]
+      })
+
+      // 在类中注入服务
+      private log: LogService;
+      consturctor(@Inject(LOG_SERVICE) private logs: LogService[]) {
+        this.log = logs.find(x => x.minimumLevel === LogLevel.DEBUG);
+      }
+    ```
+  * 如果服务是简单数据类型时，可以使用值提供程序。值提供程序的属性如下：
+
+    |名称|描述|
+    |:--:|:--|
+    |provide|定义了服务的令牌|
+    |useValue|指定了用来解析的对象|
+    |multi|多个类提供程序能否使用同一个令牌|
+  * 工厂提供程序使用函数来创建解析依赖所需的对象。 工厂提供程序属性如下：
+
+    |名称|描述|
+    |:--:|:--|
+    |provide|定义了服务的令牌|
+    |deps|指定了一个由提供程序令牌组成的数组，提供程序令牌被解析后，将被传递给由useFactory属性指定的函数|
+    |useFactory|指定了创建服务对象的函数。创建对象时，需要解析deps属性指定的令牌，这个对象将以参数方式传递给函数|
+    |multi|多个类提供程序能否使用同一个令牌|
+  
+  * 工厂提供程序使用方法
+
+    ```typescript
+      // 使用工厂提供程序
+      @NgModule({
+        providers: [
+          {provide: LOG_LEVEL, useValue: LogLevel.DEBUG},
+          {
+          provide: LogService,
+          deps: [LOG_LEVEL],
+          useFactory: (level) => {
+            let logger = new LogService();
+            logger.minimumLevel = level;
+            return logger;
+          }
+        }]
+      })
+
+      // 在类中注入服务
+      constructor(private log: LogService) {}
+    ```
+  * 已有服务提供程序可以为已有的提供程序创建别名。  这样就可以使用多个令牌来使用同一个服务
+
+    |名称|描述|
+    |:--:|:--|
+    |provide|定义了服务的令牌|
+    |useExisting|指定另一个提供程序的令牌|
+    |multi|多个类提供程序能否使用同一个令牌|
+
+  * 本地提供程序表示每个组件和指令都可以拥有自己的注入器，每个注入器都可以被配置为使用自己的提供程序集合
+  * 本地提供程序的组件装饰器属性
+
+    |名称|描述|
+    |:--:|:--|
+    |providers|创建一个提供程序，用来解析子视图和子内容的依赖|
+    |viewProviders|创建一个提供程序，用来解析子视图的依赖|

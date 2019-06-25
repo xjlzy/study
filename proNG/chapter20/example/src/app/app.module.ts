@@ -20,9 +20,12 @@ import { DiscountPipe } from './discount.pipe';
 import { PaDiscountAmountDirective } from './discount.directive';
 import { SimpleDataSource } from './model/datasource.model';
 import { Model } from './model/repository.model';
-import { LogService, LOG_SERVICE } from './log.service';
+import { LogService, LOG_SERVICE, SpecialLogService, LogLevel, LOG_LEVEL } from './log.service';
 // 注册名称为fr-FR的语言包
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
+
+// let logger = new LogService();
+// logger.minimumLevel = LogLevel.DEBUG;
 
 @NgModule({
   declarations: [
@@ -45,9 +48,36 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
   ],
   // providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   providers: [DiscountService, SimpleDataSource, Model, 
-    {   // 类提供程序  
+    // {   // 类提供程序  
+    //   provide: LOG_SERVICE,
+    //   useClass: SpecialLogService,
+    //   multi: true
+    // },
+    // {
+    //   provide: LOG_SERVICE,
+    //   useClass: LogService,
+    //   multi: true
+    // }
+    // {
+    //   provide: LOG_SERVICE,
+    //   useValue: logger
+    // }
+    {
+      provide: LOG_LEVEL,
+      useValue: LogLevel.ERROR
+    },
+    {
+      provide: 'debugLevel',
+      useExisting: LOG_LEVEL
+    },
+    {
       provide: LOG_SERVICE,
-      useClass: LogService
+      deps: ['debugLevel'],
+      useFactory: (level) => {
+        let logger = new LogService();
+        logger.minimumLevel = level;
+        return logger;
+      }
     }
   ],
   bootstrap: [AppComponent]
