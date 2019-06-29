@@ -21,6 +21,7 @@ import { PaDiscountAmountDirective } from './discount.directive';
 import { SimpleDataSource } from './model/datasource.model';
 import { Model } from './model/repository.model';
 import { LogService, LOG_SERVICE, SpecialLogService, LogLevel, LOG_LEVEL } from './log.service';
+import { PaDisplayValueDirective, VALUE_SERVICE } from './valueDisplay.directive';
 // 注册名称为fr-FR的语言包
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -39,7 +40,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     PaDiscountDisplayComponent,
     PaDiscountEditorComponent,
     DiscountPipe,
-    PaDiscountAmountDirective
+    PaDiscountAmountDirective,
+    PaDisplayValueDirective
   ],
   imports: [
     BrowserModule,
@@ -65,6 +67,10 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     {
       provide: LOG_LEVEL,
       useValue: LogLevel.ERROR
+    },
+    {
+      provide: VALUE_SERVICE,
+      useValue: 'Apples'
     },
     {
       provide: 'debugLevel',
