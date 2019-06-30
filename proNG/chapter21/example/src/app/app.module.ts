@@ -22,6 +22,7 @@ import { SimpleDataSource } from './model/datasource.model';
 import { Model } from './model/repository.model';
 import { LogService, LOG_SERVICE, SpecialLogService, LogLevel, LOG_LEVEL } from './log.service';
 import { PaDisplayValueDirective, VALUE_SERVICE } from './valueDisplay.directive';
+import { ModleModule } from './model/model.module';
 // 注册名称为fr-FR的语言包
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -46,10 +47,11 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModleModule
   ],
   // providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
-  providers: [DiscountService, SimpleDataSource, Model, 
+  providers: [DiscountService,
     // {   // 类提供程序  
     //   provide: LOG_SERVICE,
     //   useClass: SpecialLogService,
