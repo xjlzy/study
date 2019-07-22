@@ -11,6 +11,6 @@ import { MessageService } from './message.service';
 export class MessageComponent {
   lastMessage: Message;
   constructor(private messageService: MessageService) {
-    messageService.registerMessageHandler(m => this.lastMessage = m);
+    messageService.message.subscribe(m => this.lastMessage = m);
   }
 }
