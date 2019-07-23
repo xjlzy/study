@@ -4,7 +4,7 @@ import { Model } from '../model/repository.model';
 import { SharedState, MODES, SHARE_STATE } from './sharedState.model';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { filter, map } from "rxjs/operators";
+import { filter, map, distinctUntilChanged, skipWhile } from "rxjs/operators";
 
 @Component({
   selector: 'paForm',
@@ -27,15 +27,25 @@ export class FormComponent {
     //     }
     //     this.editing = update.mode === MODES.EDIT;
     //   });
+    // this.stateEvents
+    //   .pipe(map(state => state.mode === MODES.CREATE ? -1 : state.id))
+    //   .pipe(filter(id => id !== 3), distinctUntilChanged())
+    //   .subscribe(id => {
+    //     this.editing = id !== -1;
+    //     this.product = new Product();
+    //     if (id !== -1) {
+    //       Object.assign(this.product, this.model.getProduct(id));
+    //     }
+    //   })
     this.stateEvents
-      .pipe(map(state => state.mode === MODES.CREATE ? -1 : state.id))
-      .pipe(filter(id => id !== 3))
-      .subscribe(id => {
-        this.editing = id !== -1;
+      .pipe(skipWhile(state => state.mode === MODES.EDIT))
+      .pipe(distinctUntilChanged((firstState, secondState) => firstState.mode === secondState.mode && firstState.id === secondState.id))
+      .subscribe(update => {
         this.product = new Product();
-        if (id !== -1) {
-          Object.assign(this.product, this.model.getProduct(id));
+        if(update.id !== undefined) {
+          Object.assign(this.product, this.model.getProduct(update.id));
         }
+        this.editing = update.mode === MODES.EDIT;
       })
   }
 
