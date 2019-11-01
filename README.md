@@ -6,5 +6,5 @@
   |:--|:--:|:--:|
   |javascript高级程序设计|proJS|4章（chapter04）|
   |CSS世界|CSSWorld|1章（chapter01）|
-  |Angular5高级编程|proNG|21章（chapter21）|
+  |Angular5高级编程|proNG|21章（chapter26）|
   |Node.js+MongoDB+Angular Web开发|NMA|1章（chapter01）|
