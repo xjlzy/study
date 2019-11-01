@@ -13,10 +13,13 @@ import { MessageService } from '../messages/message.service';
 import { Model } from '../model/repository.model';
 import { Message } from '../messages/message.model';
 import { RouterModule } from '@angular/router';
+import { ProductCountComponent } from './productCount.component';
+import { CategoryCountComponent } from './categoryCount.component';
+import { NotFoundComponent } from './notFound.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, BrowserModule, MessageModule, RouterModule],
-  declarations: [TableComponent, FormComponent, StatePipe],
+  declarations: [TableComponent, FormComponent, StatePipe, ProductCountComponent, CategoryCountComponent, NotFoundComponent],
   exports: [ModelModule, TableComponent, FormComponent],
   // providers: [{
   //   provide: SHARE_STATE, 

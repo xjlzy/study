@@ -22,17 +22,18 @@ export class FormComponent {
     this.editing = this.activeRoute.snapshot.params['mode'] === 'edit';
     let id = this.activeRoute.snapshot.params['id'];
     if (id != null) {
-      let name = this.activeRoute.snapshot.params['name'];
-      let category = this.activeRoute.snapshot.params['category'];
-      let price = this.activeRoute.snapshot.params['price'];
-      if (name != null && category != null && price != null) {
-        this.product.id = parseInt(id);
-        this.product.name = name;
-        this.product.category = category;
-        this.product.price = price;
-      } else {
-        Object.assign(this.product, model.getProduct(parseInt(id)) || new Product());
-      }
+      Object.assign(this.product, model.getProduct(id) || new Product());
+      // let name = this.activeRoute.snapshot.params['name'];
+      // let category = this.activeRoute.snapshot.params['category'];
+      // let price = this.activeRoute.snapshot.params['price'];
+      // if (name != null && category != null && price != null) {
+      //   this.product.id = parseInt(id);
+      //   this.product.name = name;
+      //   this.product.category = category;
+      //   this.product.price = price;
+      // } else {
+      //   Object.assign(this.product, model.getProduct(parseInt(id)) || new Product());
+      // }
     }
     // this.stateEvents
     //   // .pipe(skipWhile(state => state.mode === MODES.EDIT))

@@ -14,8 +14,10 @@
     <td class="text-xs-center">
       <button class="btn btn-danger btn-sm" (click)="deleteProduct(item.id)">Delete</button>
       <button class="btn btn-warning btn-sm" 
-        [routerLink]="['/form', 'edit', item.id, {name: item.name,category: item.category,price: item.price}]">Edit</button>
+        [routerLink]="['/form', 'edit', item.id]">Edit</button>
     </td>
   </tr>
 </table>
 <button class="btn btn-primary" routerLink="/form/create">Create New Product</button>
+<button class="btn btn-danger" (click)="deleteProduct(-1)">Generate HTTP Error</button>
+<button class="btn btn-danger" routerLink="/does/not/exist">Generate Routing Error</button>

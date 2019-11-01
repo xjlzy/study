@@ -22,8 +22,26 @@ export class Model {
     return this.products.find(p => this.locator(p, id));
   }
 
+  getNextProductId(id: number): number {
+    let index = this.products.findIndex(p => this.locator(p, id));
+    if (index > -1) {
+      return this.products[this.products.length > index + 2 ? index + 1 : 0].id;
+    } else {
+      return id || 0;
+    }
+  }
+
+  getPreviousProductId(id: number): number {
+    let index = this.products.findIndex(p => this.locator(p, id));
+    if (index > -1) {
+      return this.products[index > 0 ? index - 1 : this.products.length - 1].id;
+    } else {
+      return id || 0;
+    }
+  }
+
   saveProduct(product: Product): void {
-    if(product.id === 0 || product.id === null) {
+    if (product.id === 0 || product.id === null) {
       // product.id = this.generateID();
       // this.products.push(product);
       this.dataSource.saveProduct(product).subscribe(p => this.products.push(p));
@@ -38,7 +56,7 @@ export class Model {
   deleteProduct(id: number) {
     this.dataSource.deleteProduct(id).subscribe(p => {
       let index = this.products.findIndex(p => this.locator(p, id));
-      if(index > -1) {
+      if (index > -1) {
         this.products.splice(index, 1);
       }
     });
@@ -46,8 +64,8 @@ export class Model {
 
   private generateID(): number {
     let candidate: number = 100;
-    while(this.getProduct(candidate) != null) {
-      candidate ++;
+    while (this.getProduct(candidate) != null) {
+      candidate++;
     }
     return candidate;
   }
