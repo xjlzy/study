@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'paForm',
-  moduleId: module.id,
   templateUrl: './form.component.html'
 })
 

@@ -6,7 +6,6 @@ import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'paMessages',
-  moduleId: module.id,
   templateUrl: 'message.component.html'
 })
 

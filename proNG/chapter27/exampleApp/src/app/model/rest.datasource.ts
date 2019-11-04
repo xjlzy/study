@@ -2,7 +2,7 @@ import { Injectable, InjectionToken, Inject } from "@angular/core";
 import { HttpClient, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './product.model';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, delay } from 'rxjs/operators';
 // import 'rxjs/add/operator/catch';
 // import 'rxjs/add/observable/throw';
 
@@ -24,7 +24,7 @@ export class RestDataSource {
       map(response => response as Product[]),
       catchError(err => {
         return Promise.reject(`Network Error: ${err.statusText} (${err.status})`)
-      }));
+      })).pipe(delay(5000));
   }
 
   saveProduct(product: Product): Observable<Product> {

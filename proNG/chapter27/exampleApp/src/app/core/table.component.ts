@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'paTable',
-  moduleId: module.id,
   templateUrl: './table.component.html'
 })
 
