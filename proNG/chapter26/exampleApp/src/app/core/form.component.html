@@ -3,6 +3,11 @@
   <!-- Last Event: {{stateEvents | async | formatState}} -->
 </div>
 
+<div class="p-t-1" *ngIf="editing">
+  <button class="btn btn-secondary" [routerLink]="['/form', 'edit', model.getPreviousProductId(product.id)]">Previous</button>
+  <button class="btn btn-secondary" [routerLink]="['/form', 'edit', model.getNextProductId(product.id)]" >Next</button>
+</div>
+
 <form novalidate="novalidate" #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()">
   <div class="form-group"><label>Name</label><input type="text" class="form-control" name="name" [(ngModel)]="product.name" required></div>
   <div class="form-group"><label>Category</label><input type="text" class="form-control" name="category" [(ngModel)]="product.category" required></div>

@@ -4,7 +4,7 @@ import { Model } from '../model/repository.model';
 @Component({
   selector: 'paCategoryCount',
   template: `
-    <div class="bg-info p-a-1">There are {{Count}} categories.</div>
+    <div class="bg-info p-a-1">There are {{count}} categories.</div>
   `
 })
 
