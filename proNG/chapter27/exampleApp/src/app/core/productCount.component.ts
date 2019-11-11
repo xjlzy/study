@@ -17,14 +17,13 @@ export class ProductCountComponent implements OnInit, DoCheck {
   constructor(private model: Model,
     private keyValueDiffers: KeyValueDiffers,
     private activateRoute: ActivatedRoute) {
-    console.log(this.activateRoute.pathFromRoot);
     this.activateRoute.pathFromRoot.forEach(route => {
       route.params.subscribe(params => {
         if (params['category'] != null) {
           this.category = params['category'];
           this.updateCount();
         }
-      })
+      });
     });
   }
 

@@ -16,11 +16,13 @@ import { RouterModule } from '@angular/router';
 import { ProductCountComponent } from './productCount.component';
 import { CategoryCountComponent } from './categoryCount.component';
 import { NotFoundComponent } from './notFound.component';
+import { UnsavedGuard } from './unsaved.guard';
 
 @NgModule({
   imports: [CommonModule, FormsModule, BrowserModule, MessageModule, RouterModule],
   declarations: [TableComponent, FormComponent, StatePipe, ProductCountComponent, CategoryCountComponent, NotFoundComponent],
   exports: [ModelModule, TableComponent, FormComponent],
+  providers: [UnsavedGuard]
   // providers: [{
   //   provide: SHARE_STATE, 
   //   deps: [MessageService, Model],
