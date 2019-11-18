@@ -9,13 +9,15 @@ import { MessageModule } from './messages/message.module';
 import { routing } from './app.routing';
 import { TermsGuard } from './terms.guard';
 import { LoadGuard } from './load.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, ModelModule, CoreModule, MessageModule, HttpClientModule, HttpClientJsonpModule, routing
+    BrowserModule, ModelModule, CoreModule, MessageModule, HttpClientModule, HttpClientJsonpModule, routing,
+    BrowserAnimationsModule
   ],
   providers: [TermsGuard, LoadGuard],
   bootstrap: [AppComponent]

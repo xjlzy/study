@@ -11,7 +11,7 @@ export class LoadGuard implements CanLoad {
 
   canLoad(route: Route): Promise<boolean> | boolean {
     return this.loaded || new Promise<boolean>((resolve, reject) => {
-      let responses: [[string, (string) => void]] = [
+      let responses: [string, (string) => void][] = [
         ['Yes', () => {
           this.loaded = true;
           resolve(true);

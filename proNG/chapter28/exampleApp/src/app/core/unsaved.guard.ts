@@ -29,7 +29,7 @@ export class UnsavedGuard implements CanDeactivate<FormComponent> {
       if (['name', 'category', 'price'].some(prop => component.product[prop] !== component.originalProduct[prop])) {
         let subject = new Subject<boolean>();
 
-        let respones: [[string, (string) => void]] = [
+        let respones: [string, (string) => void][] = [
           ['Yes', () => {
             subject.next(true);
             subject.complete();

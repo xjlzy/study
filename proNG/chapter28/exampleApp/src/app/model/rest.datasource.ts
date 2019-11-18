@@ -24,7 +24,7 @@ export class RestDataSource {
       map(response => response as Product[]),
       catchError(err => {
         return Promise.reject(`Network Error: ${err.statusText} (${err.status})`)
-      })).pipe(delay(5000));
+      }));//.pipe(delay(5000));
   }
 
   saveProduct(product: Product): Observable<Product> {

@@ -10,7 +10,7 @@ export class TermsGuard implements CanActivate, CanActivateChild {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
     if (route.params['mode'] === 'create') {
       return new Promise<boolean>((resolve, reject) => {
-        let responses: [[string, (string) => void]] = [
+        let responses: [string, (string) => void][] = [
           ["Yes", () => { resolve(true); }],
           ['No', () => {
             // 用来避免点击取消后Angular不允许再次激活路由
@@ -28,7 +28,7 @@ export class TermsGuard implements CanActivate, CanActivateChild {
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
     if (route.url.length > 0 && route.url[route.url.length - 1].path === 'categories') {
       return new Promise<boolean>((resolve, reject) => {
-        let responses: [[string, (string) => void]] = [
+        let responses: [string, (string) => void][] = [
           ["Yes", () => { resolve(true); }],
           ['No', () => {
             // this.router.navigateByUrl(this.router.url);
