@@ -32,3 +32,32 @@
         transition('unselected => selected', animate('400ms'))
       ]);
     ```
+  * 内置的动画状态
+
+    |状态|描述|
+    |:--:|:--|
+    |*|回退状态，当元素不处于动画触发器定义的任何一个状态时，可以应用这个状态|
+    |void|当元素不属于模板的任何一部分时，元素处于void状态|
+  * angular提供了别名机制，可以用:enter表示void=>\*,用:leave表示\*=>void
+  * 动画定时函数
+
+    |名称|描述|
+    |:--:|:--|
+    |linear|将定时值设置为一个固定值，默认选项|
+    |ease-in|动画效果开始比较慢，但是速度逐步加快|
+    |ease-out|动画效果开始比较快，但是速度逐步减慢|
+    |ease-in-out|动画效果开始比较快，然后慢下来，到中间时刻之后再次加快，直到动画结束|
+    |cubic-bezier|使用贝塞尔曲线创建中间值，详情参见[w3c](http://w3c.github.io/web-animations/#time-transformations)|
+  * 指定动画延迟的方法
+    ```javascript
+      // 400ms表示动画运行时间 200ms表示动画的延迟 ease-in表示动画曲线
+      transtion('* => selected', animate('400ms 200ms ease-in'))
+    ```
+  * 触发器为一组状态和迁移提供了包装器，并且为具有动画功能的元素提供了关联支持。
+  * AnimationEvent 事件的属性
+
+    |名称|描述|
+    |:--:|:--|
+    |fromState|返回元素正在退出的状态|
+    |toState|返回元素正在进入的状态|
+    |totalTime|返回动画的持续时间|

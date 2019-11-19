@@ -3,6 +3,7 @@ import { Model } from '../model/repository.model';
 import { Product } from '../model/product.model';
 import { ActivatedRoute } from '@angular/router';
 import { HighlightTrigger } from './table.animations';
+import { AnimationEvent } from '@angular/animations';
 
 @Component({
   selector: 'paTable',
@@ -37,5 +38,9 @@ export class TableComponent {
 
   getRowState(category: string): string {
     return this.highlightCategory === '' ? '' : (this.highlightCategory === category ? 'selected' : 'unselected');
+  }
+
+  writeAnimationEvent(event: AnimationEvent, name: string, start: boolean) {
+    console.log(`Animation ${name} ${start ? 'Start' : 'Done'} from: ${event.fromState} to: ${event.toState} time: ${event.totalTime}`);
   }
 }

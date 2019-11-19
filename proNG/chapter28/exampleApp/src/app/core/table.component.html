@@ -13,7 +13,10 @@
     <th>Price</th>
     <th></th>
   </tr>
-  <tr *ngFor="let item of getProducts()" [@rowHighlight]="getRowState(item.category)">
+  <tr *ngFor="let item of getProducts()" 
+    [@rowHighlight]="getRowState(item.category)"
+    (@rowHighlight.start)="writeAnimationEvent($event, item.name, true)"
+    (@rowHighlight.done)="writeAnimationEvent($event, item.name, false)">
     <td style="vertical-align: middle;">{{item.id}}</td>
     <td style="vertical-align: middle;">{{item.name}}</td>
     <td style="vertical-align: middle;">{{item.category}}</td>
