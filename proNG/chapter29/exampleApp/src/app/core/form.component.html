@@ -1,0 +1,18 @@
+<div class="bg-primary p-a-1" [class.bg-warning]="editing">
+  <h5>{{editing ? "Edit" : "Create"}} Product</h5>
+  <!-- Last Event: {{stateEvents | async | formatState}} -->
+</div>
+
+<div class="p-t-1" *ngIf="editing">
+  <button class="btn btn-secondary" [routerLink]="['/form', 'edit', model.getPreviousProductId(product.id)]">Previous</button>
+  <button class="btn btn-secondary" [routerLink]="['/form', 'edit', model.getNextProductId(product.id)]" >Next</button>
+</div>
+
+<!-- <form novalidate="novalidate" #form="ngForm" (ngSubmit)="submitForm(form)" (reset)="resetForm()"> -->
+<form novalidate="novalidate" #form="ngForm" (ngSubmit)="submitForm(form)">
+  <div class="form-group"><label>Name</label><input type="text" class="form-control" name="name" [(ngModel)]="product.name" required></div>
+  <div class="form-group"><label>Category</label><input type="text" class="form-control" name="category" [(ngModel)]="product.category" required></div>
+  <div class="form-group"><label>Price</label><input type="text" class="form-control" name="price" [(ngModel)]="product.price" required pattern="^[0-9\.]+$"></div>
+  <button class="btn btn-primary" type="submit" [class.btn-warning]="editing" [disabled]="form.invalid">{{editing?"Save":"Create"}}</button>
+  <button class="btn btn-secondary" type="button" routerLink="/">Cancel</button>
+</form>
