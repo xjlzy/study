@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undefined Behavior</title>
+  <style>
+    a:active {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <a id="button" href="https://www.baidu.com">baidu</a>
+  <script>
+    var btn = document.getElementById('button');
+    btn.addEventListener('mousedown', function(event) {
+      console.log('mouse down');
+      // 由于浏览器之间的差异，在火狐浏览器上样式的:active发生在mousedown之后
+      // 所以以下代码会导致:active伪类的失效
+      event.preventDefault();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clear</title>
+  <style>
+    .block-clear,
+    .table-clear,
+    .item-clear {
+      padding: 5px;
+      background-color: red;
+    }
+    .block-clear > div,
+    .table-clear > div,
+    .item-clear > div {
+      width: 100%;
+      float: left;
+      background-color: green;
+      height: 100px;
+    }
+    .block-clear::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .table-clear::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .item-clear::after {
+      content: '';
+      display: list-item;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <!-- 用block来清除浮动 -->
+  <div class="block-clear"><div></div></div>
+  <!-- 用table来清除浮动 -->
+  <div class="table-clear"><div></div></div>
+  <!-- 用list-item来清除浮动 -->
+  <div class="item-clear"><div></div></div>
+</body>
+</html>
