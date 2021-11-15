@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AOTU</title>
+  <style>
+    .ao,
+    .tu {
+      width: 0;
+      display: inline-block;
+    }
+    .ao::before,
+    .tu::before {
+      content: 'love你love';
+      outline: 2px solid #cd0000;
+      color: transparent;
+    }
+    .tu {
+      margin-left: 70px;
+      direction: rtl;
+    }
+    .tu::before{
+      content: '你love你';
+    }
+  </style>
+</head>
+<body>
+  <!-- 利用了首选最小宽度的特性，即元素的最适合的最小宽度 -->
+  <!-- 利用连续英文单词不换行的特性，我们就可以控制什么地方凹什么地方凸了 -->
+  <div class="ao"></div>
+  <div class="tu"></div>
+</body>
+</html>

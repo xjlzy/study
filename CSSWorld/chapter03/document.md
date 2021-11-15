@@ -16,3 +16,8 @@
   * 外部尺寸表示尺寸由外部元素决定
 * block容器的流动性是一种margin\border\padding和content内容区域自动分配水平空间的机制
 * 格式化宽度仅出现在“绝对定位模型”中，默认情况下绝对定位元素的宽度表现为包裹性，但是当元素的<font color="red">left/right</font>或者<font color="red">top/bottom</font>对立方位的属性值同时存在的时候，会表现为格式化宽度
+* 在CSS世界中，图片和文字的权重远大于布局
+* 容器盒子分为content box、padding box、border box和margin box四个盒子
+* <font color="red">margin的背景永远是透明的</font>
+* 元素的width和height属性是直接作用在content box上的
+* min-width/min-height的默认值为auto、max-width/max-height的默认值为none
