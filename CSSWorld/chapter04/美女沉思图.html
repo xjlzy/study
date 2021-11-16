@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美女沉思图</title>
+  <style>
+    img {
+      display: inline-block;
+      width: 256px;
+      height: 192px;
+      color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    img:not([src]) {
+      visibility: hidden;
+    }
+    img::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f0f3f9;
+      visibility: visible;
+    }
+    img::after {
+      content: attr(alt);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      line-height: 30px;
+      background-color: rgba(0,0,0,.5);
+      color: white;
+      font-size: 14px;
+      transform: translateY(100%);
+      transition: transform .2s;
+      visibility: visible;
+      text-align: center;
+    }
+    img:hover::after {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- 对替换元素的伪元素进行内容生成以及样式构建 -->
+  <!-- 仅有chrome和firefox浏览器支持，IE不支持 -->
+  <!-- 注意点： -->
+  <!-- 替换元素的伪元素尽在该元素没有src属性的时候才有效 -->
+  <!-- 不能使用content属性生成图片（针对chrome） -->
+  <!-- 需要有alt属性并有值（针对chrome） -->
+  <!-- 在firefox下::before属性的content值会被无视掉 -->
+  <img alt="美女沉思图" data-src="https://demo.cssworld.cn/images/common/l/1.jpg">
+  <button id="loadImg">加载图片</button>
+  <script>
+    document.getElementById('loadImg').onclick = function() {
+      const eleImg = document.querySelector('img');
+      const dataSrc = eleImg.getAttribute('data-src');
+      eleImg.src = dataSrc;
+    }
+  </script>
+</body>
+</html>

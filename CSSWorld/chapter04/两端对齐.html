@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用before/after伪元素实现两端对齐</title>
+  <style>
+    .box {
+      width: 256px;
+      height: 256px;
+      text-align: justify;
+    }
+    .box::before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+    }
+    .box::after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+    }
+    .bar {
+      display: inline-block;
+      width: 20px;
+      height: 100%;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- 不足之处在于 -->
+  <!-- 有些地方不能换行或者空格，而有些地方必须要换行或者空格 -->
+  <div class="box"><!--此处不能换行--><i class="bar"></i>
+    <i class="bar"></i>
+    <i class="bar"></i>
+    <i class="bar"></i>
+    <i class="bar"></i>
+    <i class="bar"></i>
+    <i class="bar"></i>
+    <i class="bar"></i>
+  </div>
+</body>
+</html>
