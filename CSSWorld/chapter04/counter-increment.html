@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter Increment</title>
+  <style>
+    .counter {
+      counter-reset: wangxiaoer 2;
+      counter-increment: wangxiaoer;
+    }
+    .counter::before {
+      content: counter(wangxiaoer);
+    }
+  </style>
+</head>
+<body>
+  <p>我叫王小二，字如其名，我现在居然变成了王小三：</p>
+  <div class="counter"></div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter reset</title>
+  <style>
+    .counter {
+      counter-reset: wangxiaoer 2 wangxiaosan 3;
+    }
+    .counter2::before {
+      content: counter(wangxiaoer);
+    }
+    .counter3::before {
+      content: counter(wangxiaosan);
+    }
+  </style>
+</head>
+<body>
+  <p>我叫王小二，字如其名，下面要出现的数字是：</p>
+  <div class="counter2 counter"></div>
+  <p>我叫王小三，字如其名，下面要出现的数字是：</p>
+  <div class="counter3 counter"></div>
+</body>
+</html>

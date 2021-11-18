@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counters</title>
+  <style>
+    .reset {
+      padding-left: 20px;
+      counter-reset: wangxiaoer 0;
+    }
+    .counter::before {
+      content: counters(wangxiaoer, '-') '.';
+      counter-increment: wangxiaoer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 要想实现嵌套，必须让每一个列表容器拥有一个普照源 -->
+  <!-- 然后通过字辈对父辈的counter-reset重置、配合counters()方法才能实现计数嵌套的效果 -->
+  <!-- 一个容器里面的普照源(counter-reset)是唯一的,一旦直接子元素出现了counter-reset，就会改变整个容器的嵌套关系 -->
+  <div class="reset">
+    <div class="counter">
+      我是王小二
+      <div class="reset">
+        <div class="counter">我是王小二的大儿子</div>
+        <div class="counter">我是王小二的二儿子
+          <div class="reset">
+            <div class="counter">我是王小二的二儿子的大孙子</div>
+            <div class="counter">我是王小二的二儿子的二孙子</div>
+            <div class="counter">我是王小二的二儿子的小孙子</div>
+          </div>
+        </div>
+        <div class="counter">我是王小二的三儿子</div>
+      </div>
+    </div>
+    <div class="counter">我是王小三</div>
+    <div class="counter">我是王小四
+      <div class="reset">
+        <div class="counter">我是王小四的大儿子</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
