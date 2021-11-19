@@ -36,3 +36,9 @@
       content: counters(wangxiaoer, '-');
     ```
 * 显示content计数值的那个DOM元素在文档流的位置一定要在counter-increment元素的后面
+
+* 内联元素的padding在垂直方向一样会影响布局，影像视觉表现
+* 对于非替换元素的内联元素，不仅padding不会加入盒高度的计算，margin和border也都是如此，不计算高度但实际在内敛盒周围发生了渲染！
+* padding属性值不支持负值
+* padding支持百分比，但是无论是水平还是垂直方向，padding的百分比值都是相对于宽度计算的
+* 对于内联元素，padding是会断行的，padding区域是根据内联模型中的行框盒子走的

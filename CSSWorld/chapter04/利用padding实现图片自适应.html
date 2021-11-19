@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用padding实现图片自适应</title>
+  <style>
+    .box {
+      /* padding元素为百分比的时候，都是按照元素的宽度计算实际值 */
+      padding: 10% 50%;
+      position: relative;
+    }
+    .box>img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- 利用padding百分比的计算方式，实现元素的宽高自适应缩放 -->
+  <div class="box"><img src="https://demo.cssworld.cn/images/4/cover-5-1.jpg" alt="cover-5-1.jpg"></div>
+</body>
+</html>
