@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用margin负值实现两端对齐</title>
+  <style>
+    .box {
+      width: 340px;
+      float: left;
+    }
+    ul {
+      list-style: none;
+      margin: 0 -20px 0 0;
+      padding: 0;
+    }
+    li {
+      float: left;
+      width: 100px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      height: 100px;
+      background-color: red;
+    }
+    ul:after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="box">ssss</div>
+</body>
+</html>

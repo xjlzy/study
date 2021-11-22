@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用margin实现两栏自适应布局</title>
+  <style>
+    .content {
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    .box-left,
+    .box-right,
+    .box-right-1 {
+      overflow: hidden;
+    }
+    .box-left>img {
+      width: 140px;
+      float: left;
+    }
+    .box-left>p {
+      margin-left: 140px;
+      background-color: red;
+      color: #fff;
+    }
+    .box-right > img {
+      width: 140px;
+      float: right;
+    }
+    .box-right > p {
+      margin-right: 140px;
+      background-color: green;
+      color: #fff;
+    }
+
+    .full {
+      width: 100%;
+      float: left;
+    }
+    .box-right-1>img {
+      width: 128px;
+      float: left;
+      margin-left: -128px;
+    }
+    .full>p {
+      margin-right: 140px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 左边固定  右侧宽度自适应 -->
+  <div class="content">
+    <div class="box-left">
+      <img src="https://demo.cssworld.cn/images/common/l/1.jpg" alt="1.jpg">
+      <p>xxxxxx</p>
+    </div>
+  </div>
+  <!-- 右边固定，左侧宽度自适应，能实现效果，但是在右边显示的，元素的位置和显示的位置不一致 -->
+  <div class="content">
+    <div class="box-right">
+      <img src="https://demo.cssworld.cn/images/common/l/1.jpg" alt="1.jpg">
+      <p>xxxxxx</p>
+    </div>
+  </div>
+  <!-- 利用margin的负值实现顺序完美一致的自适应效果 -->
+  <div class="content">
+    <div class="box-right-1">
+      <div class="full">
+        <p>xxxxx</p>
+      </div>
+      <img src="https://demo.cssworld.cn/images/common/l/1.jpg" alt="1.jpg">
+    </div>
+  </div>
+</body>
+</html>
