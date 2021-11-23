@@ -87,3 +87,9 @@
   * margin: auto;的填充规则如下：
     * 如果一侧有值，一侧为auto，则auto为剩余空间
     * 如果两侧均为auto，则平分剩余空间
+  * margin无效的场景：
+    * display: inline;的非替换元素的垂直margin是无效的
+    * display: table-cell/table-row;的元素的margin是无效的
+    * margin合并的时候更改margin值可能是无效的，比如父元素的margin-top: 50px;这时候除非给子元素设定的margin-top的值大于50，否则是无效的
+    * 绝对定位元素的非定位方位的margin值“无效”（只是看上去的无效）
+    * 定高元素的子元素的margin-bottom或者定宽元素的子元素的margin-”的
