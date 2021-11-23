@@ -8,7 +8,7 @@
   * 在很多CSS属性上有自己的一套表现规则，比如vertical-align在替换元素中的默认值是元素底部
 * 在CSS世界中，图片资源的固有尺寸无法改变
 * 利用content实现计数器
-  * counter-reset 计数器重置，数字默认为0，重置的数字可以是复数，也可以是小数（<span color="red">仅chrome支持，且会将小树向下取整，其他浏览器不支持小数，会当作0来处理</span>）
+  * counter-reset 计数器重置，数字默认为0，重置的数字可以是复数，也可以是小数（<span style="color: red;">仅chrome支持，且会将小树向下取整，其他浏览器不支持小数，会当作0来处理</span>）
     ```css
       // 当个计数器
       counter-reset: wangxiaoer 2;
@@ -44,3 +44,46 @@
 * 对于内联元素，padding是会断行的，padding区域是根据内联模型中的行框盒子走的
 * 只要元素的宽度设定，那么margin就无法更改元素的尺寸
 * 如果元素的尺寸表现符合“充分利用可用空间”，无论是垂直方向还是水平方向，都可以通过margin改变尺寸
+* 内联元素垂直方向上的margin是没有任何影响的,既不会影响外部尺寸,也不会影响内部尺寸
+* 利用margin负值可以实现分栏等高的效果,实现方式如下
+  ```html
+    <style>
+      .box {
+        overflow: hidden;
+      }
+      .box-left,
+      .box-right {
+        // 利用margin负值往外借空间的方式实现
+        margin-bottom: -9999px;
+        padding-bottom: 9999px;
+      }
+    </style>
+    <div class="box">
+      <div class="box-left"></div>
+      <div class="box-right"></div>
+    </div>
+  ```
+* margin的百分比值是不管是水平还是垂直的都是根据元素的宽度来计算的
+* <span style="color: red;">块级</span>元素的上外边距和下外边距有时会发生合并（垂直方向）注意：是发生在和当前文档流方向相垂直的方向（可通过writing-mode更改文档流方向）
+* margin合并的三种场景：
+  * 相邻兄弟块级元素的margin合并，最常见也是最基本的margin合并
+  * 父级和第一个/最后一个子元素发生合并,如以下几种情况
+    ```html
+      <!-- 以下几种情况的表现方式一致 -->
+      <div>
+        <div style="margin-top: 80px"></div>
+      </div>
+
+      <div style="margin-top: 80px">
+        <div></div>
+      </div>
+
+      <div style="margin-top: 80px">
+        <div style="margin-top: 80px"></div>
+      </div>
+    ```
+  * 空块级元素的margin合并，即空块级元素的上下边距会合并到一个值中
+  * margin合并的计算规则为：正正取大值，正负值相加，负负最负值
+  * margin: auto;的填充规则如下：
+    * 如果一侧有值，一侧为auto，则auto为剩余空间
+    * 如果两侧均为auto，则平分剩余空间

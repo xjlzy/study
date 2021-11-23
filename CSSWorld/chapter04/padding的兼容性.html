@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>padding的兼容性</title>
+  <style>
+    .box {
+      height: 100px;
+      padding: 50px 0;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- 在IE浏览器或者老版本的火狐浏览器上，如果容器可以滚动，则会忽略padding-bottom的值，无法在底部留白 -->
+  <!-- 原因在于： -->
+  <!-- 在chrome等新浏览器上,是子元素的尺寸超过了content box上显示滚动条 -->
+  <!-- 而在IE等老浏览器上,是子元素的尺寸超过了padding box之后才显示滚动条 -->
+  <div class="box">
+    <img src="https://demo.cssworld.cn/images/common/l/1.jpg" height="300"/>
+  </div>
+</body>
+</html>

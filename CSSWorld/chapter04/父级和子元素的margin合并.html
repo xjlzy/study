@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父级和子元素的margin合并</title>
+  <style>
+    .father {
+      height: 300px;
+      background-color: green;
+      /* border: 1px solid #ccc; */
+    }
+    .son {
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 如果需要阻止父子元素的margin合并，有以下方式 -->
+  <!-- 对于margin-top的合并 -->
+  <!-- 1.父元素设置为块状格式化元素（overflow:hidden） -->
+  <!-- 2.父元素设置border-top值 -->
+  <!-- 3.父元素设置padding-top值 （值不能是0） -->
+  <!-- 4.父元素和第一个子元素之间添加一个内联元素进行隔离 （该条不一定，从我测试来看，只有是有内容的元素都可以进行隔离，没有内容的内联元素无法隔离） -->
+  <!-- 对于margin-bottom的合并 -->
+  <!-- 1.父元素设置为块状格式化元素（overflow:hidden） -->
+  <!-- 2.父元素设置border-bottom值 -->
+  <!-- 3.父元素设置padding-bottom值 （值不能是0） -->
+  <!-- 4.父元素和最后一个子元素之间添加一个内联元素进行隔离 （该条不一定，从我测试来看，只有是有内容的元素都可以进行隔离，没有内容的内联元素无法隔离） -->
+  <!-- 父元素设置height、min-height或者max-height (经验证：如果是min-height需要设置的值需大于等于子元素的高度才可，如果是max-height需要小于等于子元素的高度才行) -->
+  <div class="father">
+    <div class="son">我是儿子</div>
+  </div>
+  <span>sss</span>
+</body>
+</html>
