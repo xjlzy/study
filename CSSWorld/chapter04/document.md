@@ -126,3 +126,18 @@
     ```
 * border-width除了支持具体的数字还支持thin(等同1px)、medium(等同3px)和thick(等同4px)三个关键字
 * border-color的默认颜色就是color色值
+* 利用border实现等高布局：利用border划分一个区域出来，然后将一部分显示利用margin负值和float将其在border区域显示，实现如下：
+  ```css
+    .box {
+      border-left: 150px solid #ccc;
+      background-color: #f0f3f9;
+    }
+    .box > nav {
+      width: 150px;
+      margin-left: -150px;
+      float: left;
+    }
+    .box > section {
+      overflow: hidden;
+    }
+  ```
