@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>border实现三角形</title>
+  <style>
+    .tx {
+      width: 10px;
+      height: 10px;
+      border: 10px solid;
+      border-color: #f30 transparent transparent;
+    }
+    .sjx {
+      width: 0;
+      border: 10px solid;
+      border-color: #f30 transparent transparent;
+    }
+    .dysjx {
+      width: 0;
+      border-width: 10px 20px;
+      border-style: solid;
+      border-color: #f30 transparent transparent;
+    }
+    .zjsjx {
+      width: 0;
+      border: 10px solid;
+      border-color: #f30 #f30 transparent transparent;
+    }
+    .box {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      background-color: red;
+    }
+    .box::before {
+      position: absolute;
+      content: '';
+      right: -40px;
+      bottom: 0;
+      border: 20px solid;
+      border-color: transparent transparent red red;
+    }
+    .box::after {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      right: -40px;
+      border-style: solid;
+      border-width: 10px 20px;
+      border-color: transparent transparent #fff #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="tx"></div>
+  <div class="sjx"></div>
+  <div class="dysjx"></div>
+
+  <div class="zjsjx"></div>
+
+  <div class="box">
+    asfasdfasdf
+  </div>
+</body>
+</html>

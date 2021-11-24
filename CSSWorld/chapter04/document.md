@@ -84,12 +84,45 @@
     ```
   * 空块级元素的margin合并，即空块级元素的上下边距会合并到一个值中
   * margin合并的计算规则为：正正取大值，正负值相加，负负最负值
-  * margin: auto;的填充规则如下：
-    * 如果一侧有值，一侧为auto，则auto为剩余空间
-    * 如果两侧均为auto，则平分剩余空间
-  * margin无效的场景：
-    * display: inline;的非替换元素的垂直margin是无效的
-    * display: table-cell/table-row;的元素的margin是无效的
-    * margin合并的时候更改margin值可能是无效的，比如父元素的margin-top: 50px;这时候除非给子元素设定的margin-top的值大于50，否则是无效的
-    * 绝对定位元素的非定位方位的margin值“无效”（只是看上去的无效）
-    * 定高元素的子元素的margin-bottom或者定宽元素的子元素的margin-”的
+* margin: auto;的填充规则如下：
+  * 如果一侧有值，一侧为auto，则auto为剩余空间
+  * 如果两侧均为auto，则平分剩余空间
+* margin无效的场景：
+  * display: inline;的非替换元素的垂直margin是无效的
+  * display: table-cell/table-row;的元素的margin是无效的
+  * margin合并的时候更改margin值可能是无效的，比如父元素的margin-top: 50px;这时候除非给子元素设定的margin-top的值大于50，否则是无效的
+  * 绝对定位元素的非定位方位的margin值“无效”（只是看上去的无效）
+  * 定高元素的子元素的margin-bottom或者定宽元素的子元素的margin-right的
+  * 鞭长莫及导致的margin无效
+    ```html
+      <style>
+        .box > img {
+          float: left;
+          width: 256px;
+        }
+        .box > p {
+          overflow: hidden;
+          /* 这个时候margin-left的值只要小于等于256 那么界面上就不会有任何效果 */
+          margin-left: 100px;
+        }
+      </style>
+      <div class="box">
+        <img src="">
+        <p>内容</p>
+      </div>
+    ```
+  * 内联特性导致的margin失效
+    ```html
+      <style>
+        .box > img {
+          height: 96px;
+          /* 这个时候将-200px改为-300元素的位置不会发生变化 */
+          margin-top: -200px;
+        }
+      </style>
+      <div class="box">
+        <img src="mm1.jpg">
+      </div>
+    ```
+* border-width除了支持具体的数字还支持thin(等同1px)、medium(等同3px)和thick(等同4px)三个关键字
+* border-color的默认颜色就是color色值

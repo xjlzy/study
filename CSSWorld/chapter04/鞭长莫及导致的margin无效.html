@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鞭长莫及导致的margin无效</title>
+</head>
+<body>
+  <style>
+    .box > img {
+      float: left;
+      width: 256px;
+    }
+    .box > p {
+      overflow: hidden;
+      /* 这个时候margin-left的值只要小于等于256 那么界面上就不会有任何效果 */
+      margin-left: 100px;
+    }
+  </style>
+  <div class="box">
+    <img src="https://demo.cssworld.cn/images/common/l/1.jpg">
+    <p>内容</p>
+  </div>
+</body>
+</html>
