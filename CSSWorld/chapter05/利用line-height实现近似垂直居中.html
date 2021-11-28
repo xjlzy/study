@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>利用line-height实现近似垂直居中</title>
+  <style>
+    p {
+      font-size: 80px;
+      line-height: 120px;
+      font-family: 'microsoft yahei';
+      background-color: #666;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- 由于文字字形的垂直中线位置普遍比真正的“行框盒子”的垂直中线要低 -->
+  <!-- 所以直接用行高使元素垂直居中的时候，字形会明显偏下 -->
+  <!-- 但是如果font-size不大的时候，这种情况不明显 -->
+  <p>微软雅黑</p>
+</body>
+</html>
