@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>table-cell元素的vertical-cell</title>
+  <style>
+    .cell {
+      display: table-cell;
+      height: 128px;
+      /* 由于table-cell的vertical-align是作用在自身，所以需要将vertical-align写在元素自身上 */
+      vertical-align: middle;
+      background-color: #ccc;
+    }
+    .cell > img {
+      height: 96px;
+      /* 如果将vertical-align写在子元素上，那么将不会有任何效果 */
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="cell"><img src="https://demo.cssworld.cn/images/common/l/1.jpg" alt=""></div>
+</body>
+</html>
