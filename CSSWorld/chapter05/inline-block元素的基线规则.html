@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>inline-block元素的基线规则</title>
+  <style>
+    .dlb-baseline {
+      display: inline-block;
+      width: 150px;
+      height: 150px;
+      border: 1px solid #ccc;
+      background-color: #f0f3f9;
+    }
+  </style>
+</head>
+<body>
+  <!-- 该元素的基线是margin底边缘 -->
+  <div class="dlb-baseline"></div>
+  <!-- 该元素的基线是里面内联元素内容的基线，即x的下边缘 -->
+  <div class="dlb-baseline">x-baseline</div>
+</body>
+</html>

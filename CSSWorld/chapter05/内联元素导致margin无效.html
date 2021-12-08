@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>内联元素导致margin无效</title>
+  <style>
+    body {
+      padding-top: 400px;
+    }
+    .box>img {
+      height: 96px;
+      margin-top: -200px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 由于内联元素的前面有一个幽灵空白节点，并且该节点是以内联的方式展现的 -->
+  <!-- 同时在CSS世界中，非主动触发位移的内联元素是不可能跑到计算容器外面的，所以导致了不管margin-top设置的值多大，这个内联元素都不会跑出该容器 -->
+  <div class="box"><img src="https://demo.cssworld.cn/images/common/l/1.jpg" alt=""></div>
+</body>
+</html>

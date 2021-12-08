@@ -19,3 +19,25 @@
 * vertical-align的值如果是百分比值得话，最终的计算结果是按照line-height的值计算的
 * vertical-align只能作用在内联元素以及display的值为table-cell的元素上
 * 对于table-cell元素而言，vertical-align起作用的是table-cell元素本身
+* 图片底部留有间隙的问题解决思路
+  * 设置图片vertical-align的值为非baseline的值。因为就是因为baseline对齐导致的间隙产生
+  * 设置图片块状化显示，使vertical-align和line-height等属性失效
+  * 设置容器的line-height属性足够小，比如设置容器的line-height的值为0
+  * 设置容器的font-size属性足够小，但是想要此方法生效需要设置容器的line-height属性值和当前font-size相关，比如1.5或者150%等，否者只会让间隙变得更大
+* 在CSS世界中，非主动触发的位移的内联元素是不可能跑到计算容器之外的
+  ```html
+    <style>
+      .box {
+        border: 1px solid #ccc;
+      }
+      .box>img {
+        height: 96px;
+        margin-top: -200px;
+      }
+    </style>
+    <!--  -->
+    <div class="box">
+      <img src="mm1.jpg"/>
+    </div>
+  ```
+* 对于line-block元素，如果元素里面没有内联元素或者overflow不是visible，则该元素的基线就是margin底边缘，否则其基线就是元素里面最后一行内联元素的基线
