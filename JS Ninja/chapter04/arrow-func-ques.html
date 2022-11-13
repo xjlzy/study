@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Function`s question</title>
+</head>
+<body>
+  <button id="test">click me!</button>
+  <!-- 由于箭头函数的this值是在函数创建时确定的，所以有的时候会导致一些看似奇怪的行为 -->
+  <script>
+    var button = {
+      clicked: false,
+      click: () => {
+        // 由于箭头函数的this值是在函数创建的时候确定的，
+        // 该箭头函数的this值是在定义的时候所在函数的上下文中继承的。
+        // 所以该箭头函数定义时的函数上下文为window  所以这儿的this指向widnow
+        this.clicked = true;
+        console.log(this);
+      }
+    }
+    var btnEle = document.getElementById('test');
+    btnEle.addEventListener('click', button.click);
+  </script>
+</body>
+</html>

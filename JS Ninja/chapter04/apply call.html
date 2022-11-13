@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply and Call</title>
+</head>
+
+<body>
+  <script>
+    function juggle() {
+      var result = 0;
+      for (var i = 0; i < arguments.length; i++) {
+        result += arguments[i];
+      }
+      this.result = result;
+    }
+
+    var ninja1 = {};
+    var ninja2 = {};
+
+    juggle.apply(ninja1, [1, 2, 3, 4, 5]);
+    juggle.call(ninja2, 6, 7, 8, 9);
+    console.log(ninja1, ninja2);
+  </script>
+</body>
+
+</html>

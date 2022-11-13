@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contructor</title>
+</head>
+<body>
+  <script>
+    function Ninja(name) {
+      this.name = name;
+      this.skulk = function() {
+        console.log(this, this.name);
+      }
+    }
+    var ninja1 = new Ninja('cl');
+    var ninja2 = new Ninja('lzy');
+    ninja1.skulk();
+    ninja2.skulk();
+    // new 关键字触发的动作
+    // 1. 创建一个空对象
+    // 2. 将该空对象作为this参数传递给构造函数
+    // 3. 新构造的对象作为new运算符的返回值
+    // 类似一下操作
+    function test(name) {
+      var ss = new Object();
+      ss.name = name;
+      ss.skulk = function() {
+        console.log(this, this.name);
+      }
+      return ss;
+    }
+    test('test').skulk();
+  </script>
+</body>
+</html>

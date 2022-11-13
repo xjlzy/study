@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>strict mode</title>
+</head>
+<body>
+  <script>
+    /**
+     * 在非严格模式下  函数直接调用的时候函数内部的this将是全局上下文(window对象)
+     */
+    function test() {
+      console.log(this);
+    }
+    test();
+  </script>
+  <script>
+    'use strict';
+    /**
+     * 在严格模式下  函数直接调用的时候函数内部的this的值将是undefined
+     */
+    function testInStruct() {
+      console.log(this);
+    }
+    testInStruct();
+  </script>
+</body>
+</html>
